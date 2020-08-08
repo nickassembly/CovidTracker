@@ -15,22 +15,22 @@ const Chart = () => {
     fetchAPI();
   });
 
-  const lineChart = dailyData.length ? (
+  const lineChart = dailyData[0] ? (
     <Line
       data={{
         labels: dailyData.map(({date}) => date),
-        dataSets: [
+        datasets: [
           {
-            data: dailyData.map(({confirmed}) => confirmed),
+            data: dailyData.map((data) => data.confirmed),
             label: 'Infected',
             borderColor: '#3333ff',
             fill: true,
           },
           {
-            data: dailyData.map(({deaths}) => deaths),
+            data: dailyData.map((data) => data.deaths),
             label: 'Deaths',
             borderColor: 'red',
-            backgroundColor: 'rgba(255,0,0, 0.5)',
+            backgroundColor: 'rgba(255, 0, 0, 0.5)',
             fill: true,
           },
         ],
